@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="sample3.css">
+    <title>TOWERS OF HANOI</title>
+</head>
+<body>
+    <div id="container">
+        <h1 id="head"><b>TOWERS OF HANOI</b></h1>
+        <div id="col" >
+            <div id="tempp">
+
+            </div>
+            <div id="col1"  >
+                    <img src="plank.png" id="p1" onclick="rod(1)"> 
+                    <div id="id1" data-img="1">
+                        <img src="blue.png"  id="1" class="box1" onclick="diskblue()">
+                    </div> 
+                    <div id="id2" data-img="2">
+                        <img src="green.png"  id="2" class= "box2" onclick="diskgreen()">
+                    </div>
+                    <div id="id3"  data-img="3">
+                        <img src="red.png" id="3" class="box3" onclick="diskred()">                  
+                    </div>
+            </div>
+            <div id="col2">
+                <img src="plank.png" id="p2" onclick="rod(2)">
+                <div id="id4" data-img="1" ></div>
+                <div id="id5" data-img="2"></div>
+                <div id="id6" data-img="3"></div>
+            </div>
+            <div id="col3">
+                <img src="plank.png" id="p3" onclick="rod(3)">
+                <div id="id7" data-img="1"></div>
+                <div id="id8" data-img="1"></div>
+                <div id="id9" data-img="1"></div>
+            </div>            
+        </div>
+    </div>
+    <script>
+        var temp=[0];
+        console.log(temp);
+    var img1= document.getElementById("1").getAttribute("id");
+    var img2= document.getElementById("2").getAttribute("id");
+    var img3= document.getElementById("3").getAttribute("id");
+    var iarr=[img1,img2,img3];
+    console.log(iarr);
+    var i1= document.getElementById("id1").getAttribute("data-img");
+    var i2= document.getElementById("id2").getAttribute("data-img");
+    var i3= document.getElementById("id3").getAttribute("data-img");
+    var a=[i1,i2,i3];
+    var b=[];
+    var c=[];
+    console.log(a);
+    var im1=document.getElementById("1").getAttribute("src");
+    var im2=document.getElementById("2").getAttribute("src");
+    var im3=document.getElementById("3").getAttribute("src");
+    var imagepic=[im1,im2,im3];
+    console.log(imagepic);
+
+    function diskred()
+    {
+        if(temp[0]==0){
+        for(i=0;i<3;i++){
+           if(a[i]==img3)
+            {
+                if(a[i]==a[(a.length-1)])
+                { 
+                    i++; 
+                    temp[0]=imagepic[2];
+                    document.getElementById("id"+i).innerHTML="";
+                    document.getElementById("tempp").innerHTML = "<img src="+temp[0]+" id=\"3\" class=\"box3\" onclick=\"diskred()\">";
+                    a.pop();
+                    console.log(a);
+                }
+                else
+                    return;
+            }
+            else if(b[i]==img3)
+            {
+                if(b[i]==b[(b.length-1)])
+                {   
+                    i+=4;
+                    temp[0]=imagepic[2];
+                    document.getElementById("id"+i).innerHTML="";
+                    document.getElementById("tempp").innerHTML = "<img src="+temp[0]+" id=\"3\" class=\"box3\" onclick=\"diskred()\">";
+                    b.pop();
+                }
+                else
+                    return;
+            }
+            else if(c[i]==img3)
+            {
+                if(c[i]==c[(c.length-1)])
+                {
+                    i+=7;
+                    temp[0]=imagepic[2];
+                    document.getElementById("id"+i).innerHTML="";
+                    document.getElementById("tempp").innerHTML = "<img src="+temp[0]+" id=\"3\" class=\"box3\" onclick=\"diskred()\">";
+                    c.pop();
+                }
+                else
+                    return;
+            }
+        }
+        }
+        else return;
+    }
+    function diskgreen()
+    {
+        if(temp[0]==0){
+        for(i=0;i<3;i++){
+           if(a[i]==img2)
+            {
+                if(a[i]==a[(a.length-1)])
+                { 
+                    i++;
+                    temp[0]=imagepic[1];
+                    document.getElementById("id"+i).innerHTML="";
+                    document.getElementById("tempp").innerHTML = "<img src="+temp[0]+"  id=\"2\" class= \"box2\" onclick=\"diskgreen()\">";
+                    a.pop();
+                    console.log(a);
+                }
+                else
+                    return;
+            }
+            else if(b[i]==img2)
+            {
+                if(b[i]==b[(b.length-1)])
+                {
+                    i+=4;
+                    temp[0]=imagepic[1];
+                    document.getElementById("id"+i).innerHTML="";
+                    document.getElementById("tempp").innerHTML = "<img src="+temp[0]+"  id=\"2\" class= \"box2\" onclick=\"diskgreen()\">";
+                    b.pop();
+                }
+                else
+                    return;
+            }
+            else if(c[i]==img2)
+            {
+                if(c[i]==c[(c.length-1)])
+                {
+                    i+=7;
+                    temp[0]=imagepic[1];
+                    document.getElementById("id"+i).innerHTML="";
+                    document.getElementById("tempp").innerHTML = "<img src="+temp[0]+"  id=\"2\" class= \"box2\" onclick=\"diskgreen()\">";
+                    c.pop();
+                }
+                else
+                    return;
+            }
+        }
+        }
+        else return;
+    }
+    function diskblue()
+    {
+        if(temp[0]==0){
+        for(i=0;i<3;i++){
+           if(a[i]==img1)
+            {
+                if(a[i]==a[(a.length-1)])
+                { 
+                    i++;
+                    temp[0]=imagepic[0];
+                    document.getElementById("id"+i).innerHTML="";                    
+                    document.getElementById("tempp").innerHTML = "<img src="+temp[0]+"  id=\"1\" class=\"box1\" onclick=\"diskblue()\">";
+                    a.pop();
+                }
+                else
+                    return;
+            }
+            else if(b[i]==img1)
+            {
+                if(b[i]==b[(b.length-1)])
+                {
+                    i+=4;
+                    temp[0]=imagepic[0];
+                    document.getElementById("id"+i).innerHTML="";
+                    document.getElementById("tempp").innerHTML = "<img src="+temp[0]+"  id=\"1\" class=\"box1\" onclick=\"diskblue()\">";
+                    b.pop();
+                }
+                else
+                    return;
+            }
+            else if(c[i]==img1)
+            {
+                if(c[i]==c[(c.length-1)])
+                {
+                    i+=7;
+                    temp[0]=imagepic[0];
+                    document.getElementById("id"+i).innerHTML="";
+                    document.getElementById("tempp").innerHTML = "<img src="+temp[0]+"  id=\"1\" class=\"box1\" onclick=\"diskblue()\">";
+                    c.pop();
+                }
+                else
+                    return;
+            }
+        }
+        }
+        else return;
+    }
+    function rod(num){
+        if(temp[0]!=0){
+        //if rod 1 is clicked
+            if(num==1){
+            if(a.length==0){
+                document.getElementById("id1").innerHTML=document.getElementById("tempp").innerHTML;
+
+                if(im1==temp[0])
+                a[a.length]=document.getElementById("1").getAttribute("id");
+                if(im2==temp[0])
+                a[a.length]=document.getElementById("2").getAttribute("id");
+                if(im3==temp[0])
+                a[a.length]=document.getElementById("3").getAttribute("id");
+
+                document.getElementById("tempp").innerHTML="";
+                temp[0]=0;
+            }
+            else if(a.length==1){
+                if(temp[0]=="blue.png"){
+                    return;
+                }
+                else if(temp[0]=="red.png"){
+                    document.getElementById("id2").innerHTML=document.getElementById("tempp").innerHTML;
+                    document.getElementById("tempp").innerHTML="";
+                    a[a.length]=document.getElementById("3").getAttribute("id");
+                    temp[0]=0;
+                }
+                else if(temp[0]=="green.png"){
+                    if(a[0]==1){
+                        document.getElementById("id2").innerHTML=document.getElementById("tempp").innerHTML;
+                        document.getElementById("tempp").innerHTML="";
+                        a[a.length]=document.getElementById("2").getAttribute("id");
+                        temp[0]=0;
+                    }
+                    else if(a[0]==3){
+                        return;
+                    }
+                }
+            }
+            else if(a.length==2){
+                if(temp[0]=="blue.png"){
+                    return;
+                }
+                else if(temp[0]=="red.png"){
+                    document.getElementById("id3").innerHTML=document.getElementById("tempp").innerHTML;
+                    document.getElementById("tempp").innerHTML="";
+                    a[a.length]=document.getElementById("3").getAttribute("id");
+                    temp[0]=0;
+                }
+                else if(temp[0]=="green.png"){
+                    return;
+                }
+            }
+            else if(a.length==3)
+                return;
+        }
+        //if rod 2 is clicked
+        if(num==2){
+            if(b.length==0){
+                document.getElementById("id4").innerHTML=document.getElementById("tempp").innerHTML;
+
+                if(im1==temp[0])
+                b[b.length]=document.getElementById("1").getAttribute("id");
+                if(im2==temp[0])
+                b[b.length]=document.getElementById("2").getAttribute("id");
+                if(im3==temp[0])
+                b[b.length]=document.getElementById("3").getAttribute("id");
+
+                document.getElementById("tempp").innerHTML="";
+                temp[0]=0;
+            }
+            else if(b.length==1){
+                if(temp[0]=="blue.png"){
+                    return;
+                }
+                else if(temp[0]=="red.png"){
+                    document.getElementById("id5").innerHTML=document.getElementById("tempp").innerHTML;
+                    document.getElementById("tempp").innerHTML="";
+                    b[b.length]=document.getElementById("3").getAttribute("id");
+                    temp[0]=0;
+                }
+                else if(temp[0]=="green.png"){
+                    if(b[0]==1){
+                        document.getElementById("id5").innerHTML=document.getElementById("tempp").innerHTML;
+                        document.getElementById("tempp").innerHTML="";
+                        b[b.length]=document.getElementById("2").getAttribute("id");
+                        temp[0]=0;
+                    }
+                    else if(b[0]==3){
+                        return;
+                    }
+                }
+            }
+            else if(b.length==2){
+                if(temp[0]=="blue.png"){
+                    return;
+                }
+                else if(temp[0]=="red.png"){
+                    document.getElementById("id6").innerHTML=document.getElementById("tempp").innerHTML;
+                    document.getElementById("tempp").innerHTML="";
+                    b[b.length]=document.getElementById("3").getAttribute("id");
+                    temp[0]=0;
+                }
+                else if(temp[0]=="green.png"){
+                    return;
+                }
+            }
+            else if(b.length==3)
+                return;
+        }
+        //if rod 3 is clicked
+        if(num==3){
+            if(c.length==0){
+                document.getElementById("id7").innerHTML=document.getElementById("tempp").innerHTML;
+
+                if(im1==temp[0])
+                c[c.length]=document.getElementById("1").getAttribute("id");
+                if(im2==temp[0])
+                c[c.length]=document.getElementById("2").getAttribute("id");
+                if(im3==temp[0])
+                c[c.length]=document.getElementById("3").getAttribute("id");
+
+                document.getElementById("tempp").innerHTML="";
+                temp[0]=0;
+            }
+            else if(c.length==1){
+                if(temp[0]=="blue.png"){
+                    return;
+                }
+                else if(temp[0]=="red.png"){
+                    document.getElementById("id8").innerHTML=document.getElementById("tempp").innerHTML;
+                    document.getElementById("tempp").innerHTML="";
+                    c[c.length]=document.getElementById("3").getAttribute("id");
+                    temp[0]=0;
+                }
+                else if(temp[0]=="green.png"){
+                    if(c[0]==1){
+                        document.getElementById("id8").innerHTML=document.getElementById("tempp").innerHTML;
+                        document.getElementById("tempp").innerHTML="";
+                        c[c.length]=document.getElementById("2").getAttribute("id");
+                        temp[0]=0;
+                    }
+                    else if(c[0]==3){
+                        return;
+                    }
+                }
+            }
+            else if(c.length==2){
+                if(temp[0]=="blue.png"){
+                    return;
+                }
+                else if(temp[0]=="red.png"){
+                    document.getElementById("id9").innerHTML=document.getElementById("tempp").innerHTML;
+                    document.getElementById("tempp").innerHTML="";
+                    c[c.length]=document.getElementById("3").getAttribute("id");
+                    temp[0]=0;
+                    if(c.length==3){
+                        if(c[0]==1 && c[1]==2 && c[2]==3){
+                        document.write("YOU WON, Reload page for restart");
+                        
+                        }
+                    }
+                }
+                else if(temp[0]=="green.png"){
+                    return;
+                }
+            }
+            else if(c.length==3){
+                return;
+            }
+        }
+        
+        }
+    }
+  
+    </script>
+  </body>
+  </html>
